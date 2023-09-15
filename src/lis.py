@@ -49,4 +49,17 @@ def longest_increasing_substring(x: Sequence[Any]) -> tuple[int, int]:
     # The leftmost empty string is our first best bet
     best = (0, 0)
     # FIXME: explore the other possibilities
+    for i in range(len(x)):
+        tmp = []
+        for j in x[i:]:
+            tmp.append(j)
+            if is_increasing(tmp):
+                new_str = (tmp[0], tmp[-1])
+                if substring_length(new_str) > substring_length(best):
+                    best = new_str
     return best
+
+
+x = [12, 45, 32, 65, 78, 23, 35, 45, 57]
+
+print(longest_increasing_substring(x))
